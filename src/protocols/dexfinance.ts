@@ -4,8 +4,8 @@ import { ProtocolDefinition } from "../public-types";
 
 /* Protocol Template */
 export default {
-  name: "XXX", // Your protocol's display name, formatted as it will appear in the BondProtocol dApp
-  description: "XXX", // A short protocol description
+  name: "Dex Finance", // Your protocol's display name, formatted as it will appear in the BondProtocol dApp
+  description: "Dex Finance provides an ecosystem of financial products that aims to help users navigate through the intricacies DeFi via sustainable real yields.", // A short protocol description
   logoUrl: "XXX",
   // Links to landing page, socials and docs
   links: {
