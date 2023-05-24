@@ -74,21 +74,20 @@ export default {
 async function getDexfinanceTokenPrice(startOfPath: string[], provider: Provider) {
   try {
     const DEXSWAP_ROUTER_ABI = ["function getAmountsOut(uint256 amountIn, address[] calldata path, address caller) external view returns(uint256[] memory amounts)"];
-    const DEXSWAP_ROUTER_ADDRESS = "0x090A4aDa59Cb3284F1Ca23DFaF08A507e22929a4";
-    const USDEX_PLUS_DECIMALS = 18;
-    const USDC_PLUS_DECIMALS = 18;
+    const DEXSWAP_ROUTER_ADDRESS = "0x6513b561c61d6032D0Ac2dB54739DFaFb8381d62";
+    const USDC_DECIMALS = 6;
     const dexSwapRouter = new ethers.Contract(DEXSWAP_ROUTER_ADDRESS, DEXSWAP_ROUTER_ABI, provider);
 
     const multiplier = 1e3
     // @ts-ignore
     const path = [...startOfPath, USDC.addresses[CHAIN_ID.ARBITRUM_MAINNET]]
-    const inputAmountBN = ethers.utils.parseUnits("1", USDEX_PLUS_DECIMALS).div(multiplier)
+    const inputAmountBN = ethers.utils.parseUnits("1", 1e18).div(multiplier)
     const caller = '0x0000000000000000000000000000000000000000'
     const amounts = await dexSwapRouter.getAmountsOut(inputAmountBN, path, caller);
 
     const a1Raw = amounts[amounts.length - 1];
-    const price = Number(formatUnits(a1Raw, USDC_PLUS_DECIMALS)) * multiplier;
-    return price
+    const resultPrice = formatUnits(ethers.BigNumber.from(a1Raw).mul(multiplier), USDC_DECIMALS)
+    return +resultPrice
   } catch (e) {
     // @ts-ignore
     throw new Error(e);
