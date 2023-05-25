@@ -1,7 +1,6 @@
 import { ethers } from "ethers";
 import { formatUnits } from "ethers/lib/utils";
 import { Provider } from "@ethersproject/providers";
-import USDC from './tokens/usdc'
 
 export type CustomPriceFunction = (provider?: Provider) => Promise<number>;
 
@@ -78,18 +77,16 @@ async function getDexfinanceTokenPrice(startOfPath: string[], provider: Provider
     const USDC_DECIMALS = 6;
     const dexSwapRouter = new ethers.Contract(DEXSWAP_ROUTER_ADDRESS, DEXSWAP_ROUTER_ABI, provider);
 
-    const multiplier = 1e3
-    // @ts-ignore
-    const path = [...startOfPath, USDC.addresses[CHAIN_ID.ARBITRUM_MAINNET]]
-    const inputAmountBN = ethers.utils.parseUnits("1", 1e18).div(multiplier)
-    const caller = '0x0000000000000000000000000000000000000000'
+    const multiplier = 1e3;
+    const path = [...startOfPath, "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"];
+    const inputAmountBN = ethers.utils.parseUnits("1", 1e18).div(multiplier);
+    const caller = '0x0000000000000000000000000000000000000000';
     const amounts = await dexSwapRouter.getAmountsOut(inputAmountBN, path, caller);
 
     const a1Raw = amounts[amounts.length - 1];
-    const resultPrice = formatUnits(ethers.BigNumber.from(a1Raw).mul(multiplier), USDC_DECIMALS)
-    return +resultPrice
+    const resultPrice = formatUnits(ethers.BigNumber.from(a1Raw).mul(multiplier), USDC_DECIMALS);
+    return +resultPrice;
   } catch (e) {
-    // @ts-ignore
     throw new Error(e);
   }
 }
