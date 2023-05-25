@@ -79,7 +79,7 @@ async function getDexfinanceTokenPrice(startOfPath: string[], provider: Provider
 
     const multiplier = 1e3;
     const path = [...startOfPath, "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"];
-    const inputAmountBN = ethers.utils.parseUnits("1", 1e18).div(multiplier);
+    const inputAmountBN = ethers.utils.parseUnits("1", 18).div(multiplier);
     const caller = '0x0000000000000000000000000000000000000000';
     const amounts = await dexSwapRouter.getAmountsOut(inputAmountBN, path, caller);
 
