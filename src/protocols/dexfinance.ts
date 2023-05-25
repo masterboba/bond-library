@@ -1,5 +1,4 @@
 import { CHAIN_ID, CUSTOM_PRICE_FEEDS, SUPPORTED_LP_TYPES } from "../constants";
-import CUSTOM_PRICE_FEEDS_METHODS from "../custom-price-feeds";
 import { ProtocolDefinition } from "../public-types";
 
 /* Protocol Template */
@@ -40,7 +39,7 @@ export default {
       priceSources: [
         {
           source: "custom",
-          customPriceFunction: CUSTOM_PRICE_FEEDS_METHODS[CUSTOM_PRICE_FEEDS.DEXFI_GDEX],
+          customPriceFunction: CUSTOM_PRICE_FEEDS.DEXFI_GDEX,
           providerChainId: CHAIN_ID.ARBITRUM_MAINNET,
         },
       ],
@@ -54,7 +53,7 @@ export default {
       priceSources: [
         {
           source: "custom",
-          customPriceFunction: CUSTOM_PRICE_FEEDS_METHODS[CUSTOM_PRICE_FEEDS.DEXFI_USDEX],
+          customPriceFunction: CUSTOM_PRICE_FEEDS.DEXFI_USDEX,
           providerChainId: CHAIN_ID.ARBITRUM_MAINNET,
         },
       ],
@@ -64,6 +63,7 @@ export default {
     {
       name: "USDEX+/gDEX LP",
       symbol: "USDEX+/gDEX-LP",
+      // @ts-ignore
       lpType: SUPPORTED_LP_TYPES.UNISWAP_V2,
       addresses: {
         [CHAIN_ID.ARBITRUM_MAINNET]: "0x62118a631D030C3023dD3001b7ce96aa042ffb1E",
