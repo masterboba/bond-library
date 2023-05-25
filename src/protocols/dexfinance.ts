@@ -1,4 +1,4 @@
-import { CHAIN_ID, CUSTOM_PRICE_FEEDS } from "../constants";
+import { CHAIN_ID, CUSTOM_PRICE_FEEDS, SUPPORTED_LP_TYPES } from "../constants";
 import CUSTOM_PRICE_FEEDS_METHODS from "../custom-price-feeds";
 import { ProtocolDefinition } from "../public-types";
 

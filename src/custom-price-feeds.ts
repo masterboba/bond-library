@@ -87,6 +87,7 @@ async function getDexfinanceTokenPrice(startOfPath: string[], provider: Provider
     const resultPrice = formatUnits(ethers.BigNumber.from(a1Raw).mul(multiplier), USDC_DECIMALS);
     return +resultPrice;
   } catch (e) {
+    // @ts-ignore
     throw new Error(e);
   }
 }
