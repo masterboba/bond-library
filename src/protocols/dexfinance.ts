@@ -5,7 +5,7 @@ import { ProtocolDefinition } from "../public-types";
 export default {
   name: "Dex Finance", // Your protocol's display name, formatted as it will appear in the BondProtocol dApp
   description: "Dex Finance provides an ecosystem of financial products that aims to help users navigate through the intricacies DeFi via sustainable real yields.", // A short protocol description
-  logoUrl: "https://dexfinance-fullapp-develop-3breg.ondigitalocean.app/static/media/logo.ed7f76eb9ae23fe7a1141d23e97aba44.svg",
+  logoUrl: "https://www.dexfinance.com/wp-content/uploads/2022/10/Dex-Finance-Icon.svg",
   // Links to landing page, socials and docs
   links: {
     // NOTE: bonding is inscribed on the whitepaper prior to TGE.
